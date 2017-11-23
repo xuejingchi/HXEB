@@ -23,15 +23,15 @@
                 <h2 class="name">{{food.name}}</h2>
                 <p class="desc">{{food.description}}</p>
                 <div class="extra">
-                  <span class="count">月售{{food.sellCount}}</span><span class="count">好评{{food.rating}}</span>
+                  <span class="count">月售{{food.sellCount}}{{ $t("message") }}</span><span class="count">好评{{food.rating}}</span>
                   <!--<input type="file" @change="getFile" ref="file" />-->
                   <!--<Upload action="http://192.168.5.220:8081/file_upload">-->
                     <!--<Button type="ghost" icon="ios-cloud-upload-outline">Upload files</Button>-->
                   <!--</Upload>-->
                 </div>
                 <div class="price">
-                  <span class="now">￥{{food.price}}</span><span class="old"
-                                                                v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                  <span class="now">￥{{food.price}}{{timetest}}</span>
+                  <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartControl-wrapper">
                   <cartControl :food="food" @increment="incrementTotal"></cartControl>
@@ -43,7 +43,7 @@
       </ul>
     </div>
     <div>
-      <shopCart :select-foods="selectFoods" :delivery-price="info.deliveryPrice"
+      <shopCart :test-message="testItem" :select-foods="selectFoods" :delivery-price="info.deliveryPrice"
                 :min-price="info.minPrice" ref="shopCart"></shopCart>
       <food :food="selectedFood" ref="food"></food>
     </div>
@@ -56,6 +56,7 @@
   import food from '../food/food.vue';
   import data from 'common/json/data.json';
   import Axios from 'axios';
+  import moment from 'moment';
   //  const ERR_OK = 0;
   export default {
     props: {
@@ -69,27 +70,23 @@
         listHeight: [],
         scrolly: 0,
         selectedFood: {},
-        test: ''
+        test: '',
+        testItem: [
+          { id: 0, text: 'xjc' },
+          { id: 1, text: 'wjw' }
+        ],
+        timetest: moment(1511345648000).format('LLLL')
       };
     },
     created() {
-//      this.$http.get('/api/goods').then((response) => {
-//        response = response.body;
-//        if (response.errno === ERR_OK) {
-//         this.goods = response.data;
-//       this.$nextTick(() => {
-//        this._initScroll();
-//        this._calculateHeight();
-//       });
-//        }
-//      });
-
       this.goods = data.goods;
       this.$nextTick(() => {
         this._initScroll();
         this._calculateHeight();
       });
       this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
+      console.log(33333, this);
+//      this.i18nTest = this.i18nTest._i18n.messages.zh.message;
     },
     mounted() {
 //      this.$nextTick(() => {
@@ -121,8 +118,8 @@
     },
     methods: {
       getFile(e) {
-        console.log(33333, e.target.files);
-        console.log(44444, this.$refs.file.files);
+//        console.log(33333, e.target.files);
+//        console.log(44444, this.$refs.file.files);
           Axios.post('http://192.168.5.220:8081/file_upload', {image: e.target.files})
             .then(function (rsp) {
               console.log(1112, rsp);

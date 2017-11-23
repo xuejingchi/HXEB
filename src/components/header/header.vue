@@ -7,10 +7,12 @@
       <div class="content">
         <div class="title">
           <span class="brand"></span>
-          <span class="name">{{info.name}}</span>
+          <span class="name" @click="changeLanguage" v-bind:title="message">{{info.name}}</span>
         </div>
         <div class="description">
           {{info.description}}/{{info.deliveryTime}}分钟送达
+          <input type="text" v-model="vModel" />
+          <span @click="modelClick($event)">{{vModel}}</span>
         </div>
         <div v-if="info.supports" class="support">
           <span class="icon" :class="classMap[info.supports[0].type]"></span>
@@ -75,15 +77,30 @@
     },
     data() {
       return {
-        detailShow: false
+        detailShow: false,
+        message: 'test',
+        vModel: '333'
       };
     },
     methods: {
+      changeLanguage() {
+//        console.log(this._i18n.locale);
+        let locale = this._i18n.locale;
+        if (locale === 'en') {
+          this._i18n.locale = 'zh';
+        } else {
+          this._i18n.locale = 'en';
+        }
+      },
       showDetail() {
         this.detailShow = true;
       },
       hideDetail() {
         this.detailShow = false;
+      },
+      modelClick(e) {
+//        window.alert(e.target.outerText);
+        window.alert(this.vModel);
       }
     },
     created() {

@@ -11,12 +11,25 @@ import 'common/stylus/index.styl';
 import stores from './stores.js';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
+import VueI18n from 'vue-i18n';
+import en from 'iview/dist/locale/en-US';
+import zh from 'iview/dist/locale/zh-CN';
 // 安装 "VueRouter"这个插件
 /* eslint-disable no-new */
 Vue.use(Vuex);
 Vue.use(VueRouter);
+Vue.use(VueI18n);
 Vue.use(iView);
 Vue.config.productionTip = false;
+
+const messages = {
+  en: Object.assign({ message: 'hello' }, en),
+  zh: Object.assign({ message: '你好' }, zh)
+};
+const i18n = new VueI18n({
+  locale: 'zh',  // set locale
+  messages  // set locale messages
+});
 
 // 引入mockjs
 require('./mock.js');
@@ -30,7 +43,8 @@ let router = new VueRouter({
 });
 let app = new Vue({
   store,
-  router
+  router,
+  i18n
 }).$mount('#app');
 router.push('/goods');
 Vue.filter('getYMD', function(input) {
