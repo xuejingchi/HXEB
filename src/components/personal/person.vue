@@ -1,11 +1,11 @@
 <template>
-  <div class="good">
-    goods
+  <div class="person">
+    person
   </div>
 </template>
 <script type="text/ecmascript-6">
-//  import Axios from 'axios';
-//  import moment from 'moment';
+//  import Axios from 'axios'
+//  import moment from 'moment'
   //  const ERR_OK = 0;
   export default {
     props: {
@@ -14,12 +14,9 @@
       return {
       }
     },
-    created() {
-    },
-    mounted() {
-    },
-    computed: {
-    },
+    created() {},
+    mounted() {},
+    computed: {},
     methods: {
     },
     components: {

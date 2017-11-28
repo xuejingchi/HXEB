@@ -1,8 +1,8 @@
 {
-  "name": "eleme",
+  "name": "wjfe",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "yangyi <639293382@qq.com>",
+  "description": "vue project",
+  "author": "xjc <994022632@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "better-scroll": "^0.1.8",
-    "iview": "^2.7.3",
+    "element-ui": "^2.0.5",
     "moment": "^2.19.2",
     "stylus": "^0.54.5",
     "vue": "^2.1.0",

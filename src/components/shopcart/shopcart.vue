@@ -11,6 +11,7 @@
           </div>
           <div class="price" :class="{'highlight': totalPrice > 0}">￥{{totalPrice}}</div>
           <div class="desc">另需配送费￥{{deliveryPrice}}元</div>
+
           <span v-for="arr in testMessage">
             {{arr.text}}
           </span>

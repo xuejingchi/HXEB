@@ -1,89 +1,81 @@
 <template>
-  <div>
+  <div class="app">
     <!-- 头部 -->
-    <v-header :info="info"></v-header>
-    <!-- 主体切换 -->
-    <div class="tab border-1px">
-      <div class="tab-item">
-        <router-link v-bind:to="'/goods'">
-          商品
-        </router-link>
-      </div>
-      <div class="tab-item">
-        <router-link to="/ratings">
-          评论
-        </router-link>
-      </div>
-      <div class="tab-item">
-        <router-link to="/seller">
-          商家
-        </router-link>
-      </div>
-    </div>
+    <!--<v-header :info='info'></v-header>-->
+    <!--&lt;!&ndash; 主体切换 &ndash;&gt;-->
+    <!--<div class='tab border-1px'>-->
+      <!--<div class='tab-item'>-->
+        <!--<router-link v-bind:to='/goods'>-->
+          <!--商品-->
+        <!--</router-link>-->
+      <!--</div>-->
+      <!--<div class='tab-item'>-->
+        <!--<router-link to='/ratings'>-->
+          <!--评论-->
+        <!--</router-link>-->
+      <!--</div>-->
+      <!--<div class='tab-item'>-->
+        <!--<router-link to='/seller'>-->
+          <!--商家-->
+        <!--</router-link>-->
+      <!--</div>-->
+    <!--</div>-->
     <!-- 头部 -->
-    <keep-alive>
-      <router-view :info="info"></router-view>
-    </keep-alive>
-
-
+    <el-container>
+      <el-header>
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+          <router-link v-bind:to="'/homepage'">首页</router-link>
+          <router-link to='/goods'>商品</router-link>
+          <router-link to='/seller'>商家</router-link>
+          <router-link to='/person'>个人中心</router-link>
+        </el-menu>
+      </el-header>
+      <el-main><router-view></router-view></el-main>
+      <el-footer>Footer</el-footer>
+    </el-container>
+    <!--<keep-alive>-->
+      <!--<router-view :info='info'></router-view>-->
+    <!--</keep-alive>-->
   </div>
 </template>
-<script type="text/ecmascript-6">
-  import header from './components/header/header.vue';
-  import {urlParse} from 'common/js/util';
-  import data from 'common/json/data.json';
+<script type='text/ecmascript-6'>
+  import header from 'components/header/header.vue'
 //  const ERR_OK = 0;
   export default {
     data() {
       return {
-        info: {},
-        id: (() => {
-          let queryParam = urlParse();
-          console.log(11, queryParam);
-          return queryParam.id;
-        })()
-      };
+        activeIndex: '1',
+      }
     },
     created() {
-//      this.$http.get('/api/seller?id=' + this.seller.id).then((response) => {
-//        response = response.body;
-//        if (response.errno === ERR_OK) {
-//          this.seller = response.data;
-//          this.seller = Object.assign({}, this.seller, response.data);
-//        }
-//      });
-
-      this.info = data.seller;
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath)
+      }
     },
     components: {
       'v-header': header
     }
-  };
+  }
 </script>
-<style lang="stylus" rel="stylesheet/stylus">
-  @import "common/stylus/mixin.styl";
-
-  .tab {
-    display: flex;
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    /*border: 1px solid rgba(7,17,27,0.1);*/
-  border-1px(rgba(7, 17, 27, 0.1));
+<style>
+  .app, .el-container {
+    height: 100%;
   }
-
-  .tab .tab-item {
-    flex: 1;
+  .el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
     text-align: center;
+    line-height: 60px;
   }
-
-  .tab .tab-item a {
-    display: block;
-    font-size: 14px;
-    color: rgb(77, 85, 93);
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 160px;
   }
-
-  .tab .tab-item .active {
-    color: rgb(240, 20, 20);
+  body > .el-container {
+    margin-bottom: 40px;
   }
 </style>

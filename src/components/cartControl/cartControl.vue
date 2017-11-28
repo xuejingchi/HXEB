@@ -24,6 +24,7 @@
     },
     methods: {
       addCart(event) {
+        console.log(event);
         if (!event._constructed) {
           // 去掉自带click事件的点击
           return;
