@@ -1,6 +1,6 @@
 <template>
-  <div class="good">
-    goods{{ $t("el.cascader.loading") }}{{ $t("message") }}
+  <div class="footer" @click="changeLanguage">
+    备案类信息
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -21,11 +21,16 @@
     computed: {
     },
     methods: {
+      changeLanguage() {
+        const locale = this._i18n.locale
+        if (locale === 'en') {
+          this._i18n.locale = 'zh'
+        } else {
+          this._i18n.locale = 'en'
+        }
+      }
     },
     components: {
     }
   }
 </script>
-<style lang="less" scoped>
-
-</style>

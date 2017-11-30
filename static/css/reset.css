@@ -53,6 +53,9 @@ a {
   text-decoration: none;
   -webkit-backface-visibility: hidden;
 }
+a:focus {
+  outline:none;
+}
 
 li {
   list-style: none;

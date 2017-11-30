@@ -3,12 +3,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VueRouter from 'vue-router'
-import App from './App'
-import homepage from './components/homepage/homepage.vue'
-import goods from './components/goods/goods.vue'
-import seller from './components/seller/seller.vue'
-import person from './components/personal/person.vue'
-import 'common/stylus/index.styl'
+// import App from './App'
+// import homepage from './components/homepage/homepage.vue'
+// import goods from './components/goods/goods.vue'
+// import seller from './components/seller/seller.vue'
+// import person from './components/personal/person.vue'
 import stores from './stores.js'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -41,23 +40,61 @@ let routes = [
   {
     path: '/',
     name: 'index',
-    component: App,
+    component: function (resolve) {
+      require(['./App.vue'], resolve)
+    },
     children: [
-      {path: '/homepage', component: homepage},
-      {path: '/goods', component: goods},
-      {path: '/seller', component: seller},
-      {path: '/person', component: person}
+      {
+        path: '/homepage',
+        component: function (resolve) {
+          require(['./components/homepage/homepage.vue'], resolve)
+        },
+        mate: { keepAlive: true }
+      },
+      {
+        path: '/goods',
+        component: function (resolve) {
+          require(['./components/goods/goods.vue'], resolve)
+        }
+      },
+      {
+        path: '/seller',
+        component: function (resolve) {
+          require(['./components/seller/seller.vue'], resolve)
+        }
+      },
+      {
+        path: '/person',
+        component: function (resolve) {
+          require(['./components/personal/person.vue'], resolve)
+        },
+        children: [
+          {
+            path: 'person/address',
+            component: function (resolve) {
+              require(['./components/personal/address/address.vue'], resolve)
+            }
+          },
+          {
+            path: 'person/detail',
+            component: function (resolve) {
+              require(['./components/personal/detail/detail.vue'], resolve)
+            }
+          }
+        ]
+      },
     ]
   }
 ]
 let router = new VueRouter({
   'linkActiveClass': 'active',
-  routes: routes
+  routes,
+  mode: 'history'
 })
 let app = new Vue({
   store,
   router,
   i18n
 }).$mount('#app')
-router.push('/homepage')
+// router.push('/homepage')
 export default app
