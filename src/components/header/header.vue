@@ -23,13 +23,9 @@
     },
     created() {
     },
-    mounted() {
-      this.$router.currentRoute.fullPath === '/' ? this.$router.push('/homepage') : console.log(this.$router)
-    },
     components: {
     }
   }
 </script>
 <style>
-
 </style>

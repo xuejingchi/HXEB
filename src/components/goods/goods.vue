@@ -4,7 +4,7 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-//  import Axios from 'axios';
+  import Axios from 'axios'
 //  import moment from 'moment';
   export default {
     props: {
@@ -16,6 +16,13 @@
     created() {
     },
     mounted() {
+      Axios.post('/user/username')
+        .then(function (rsp) {
+          console.log(1112, rsp)
+        })
+        .catch(function (err) {
+          console.log(2223, err)
+        })
     },
     computed: {
     },

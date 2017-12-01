@@ -1,7 +1,7 @@
 /**
  * Created by vincent on 17/11/20.
  */
-var Mock = require('mockjs');
+var Mock = require('mockjs')
 
 module.exports = function () {
   return {

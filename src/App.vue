@@ -25,9 +25,9 @@
     created() {
     },
     methods: {
-//      handleSelect(key, keyPath) {
-//        console.log(key, keyPath)
-//      }
+    },
+    mounted() {
+      this.$router.currentRoute.fullPath === '/' ? this.$router.push('/homepage') : console.log(this.$router)
     },
     components: {
       'v-footer': footer,
