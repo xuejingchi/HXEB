@@ -12,7 +12,7 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
-    // 禁用分好
+    // 禁用分号
     semi: [1, 'never'],
     // 禁止使用console(发布前排查)
     'no-console': ['error', { allow: ['log', 'warn', 'error'] }],
@@ -43,5 +43,15 @@ module.exports = {
     'no-param-reassign': 0,
     // 禁止使用continue
     'no-continue': 0,
+    // 单引号命名
+    'quotes': ['error', 'single'],
+    // 字符串拼接方式
+    'prefer-template': 2,
+    // switch中case不能重复
+    'no-duplicate-case': 2,
+    // parseInt必须指定第二个参数
+    'radix': 2,
+    // 驼峰命名
+    'camelcase': 2
   }
 };

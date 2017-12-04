@@ -22,7 +22,6 @@
         })
         .catch(function (err) {
           console.log(2223, err)
-          console.log(111, this)
         })
     },
     computed: {

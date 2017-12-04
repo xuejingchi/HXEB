@@ -26,3 +26,6 @@
     }
   }
 </script>
+<style lang="less" scope>
+  @import 'seller.less';
+</style>
