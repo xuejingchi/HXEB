@@ -1,6 +1,8 @@
 <template>
   <div class="address">
-    address
+    <router-link tag="li" to="/goods">
+      <a>address</a>
+    </router-link>
   </div>
 </template>
 <script type="text/ecmascript-6">

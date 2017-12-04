@@ -1,3 +1,4 @@
+### git上传忽略文件 ###
 .idea
 .idea/
 .DS_Store

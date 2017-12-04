@@ -4,7 +4,7 @@
 export default {
   // 存储状态值
   state: {
-    count: 0
+    count: 0,
   },
   // 状态值的改变方法,操作状态值
   // 提交mutations是更改Vuex状态的唯一方法

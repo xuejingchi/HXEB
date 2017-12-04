@@ -19,9 +19,17 @@ const produceNewsData = function () {
   }
 
   return {
-    articles: articles
+    articles
   }
 }
+// const responseTransData = () => {
+//   let trans = []
+//   let newArray =
+//   return {
+//     trans
+//   }
+// }
 
 // Mock.mock( url, post/get , 返回的数据)；
 Mock.mock('/user/username', 'post', produceNewsData)
+// Mock.mock('/order/trans', 'post', produceNewsData)

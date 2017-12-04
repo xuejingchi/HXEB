@@ -16,7 +16,6 @@
 <script type='text/ecmascript-6'>
   import header from 'components/header/header.vue'
   import footer from 'components/footer/footer.vue'
-//  const ERR_OK = 0;
   export default {
     data() {
       return {
@@ -27,7 +26,9 @@
     methods: {
     },
     mounted() {
-      this.$router.currentRoute.fullPath === '/' ? this.$router.push('/homepage') : console.log(this.$router)
+      this.$router.currentRoute.fullPath === '/'
+        ? this.$router.push('/homepage')
+        : console.log(this.$router)
     },
     components: {
       'v-footer': footer,
