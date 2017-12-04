@@ -27,6 +27,7 @@
           this._i18n.locale = 'zh'
         } else {
           this._i18n.locale = 'en'
+          console.log(111, this)
         }
       }
     },
