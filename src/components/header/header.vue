@@ -5,7 +5,7 @@
         <router-link v-bind:to="'/homepage'">首页</router-link>
         <router-link to='/goods'>商品</router-link>
         <router-link to='/seller'>商家</router-link>
-        <router-link to='/person'>个人中心</router-link>
+        <router-link to='/person/address'>个人中心</router-link>
       </el-menu>
     </el-header>
   </div>

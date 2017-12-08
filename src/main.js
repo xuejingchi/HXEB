@@ -70,13 +70,13 @@ let routes = [
         },
         children: [
           {
-            path: 'person/address',
+            path: 'address',
             component: function (resolve) {
               require(['./components/personal/address/address.vue'], resolve)
             }
           },
           {
-            path: 'person/detail',
+            path: 'detail',
             component: function (resolve) {
               require(['./components/personal/detail/detail.vue'], resolve)
             }

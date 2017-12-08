@@ -16,10 +16,8 @@ module.exports = {
     semi: [1, 'never'],
     // 禁止使用console(发布前排查)
     'no-console': ['error', { allow: ['log', 'warn', 'error'] }],
-    // 禁止使用按位操作符(http://eslint.cn/docs/rules/no-bitwise)
-    'no-bitwise': 0,
     // 禁止未使用未定义的变量
-    'no-unused-vars': ['error', {
+    'no-unused-vars': ['warn', {
       'vars': 'all',
       'args': 'after-used',
       'ignoreRestSiblings': false,
