@@ -23,6 +23,7 @@ const i18n = new VueI18n({
 Vue.use(ElementUI, {
   i18n: (key, value) => i18n.el(key, value)
 })
+console.log(33345, process.env.NODE_ENV)
 // 引入mockjs
 require('./mock.js')
 const store = new Vuex.Store(stores)

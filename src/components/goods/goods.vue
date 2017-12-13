@@ -1,12 +1,12 @@
 <template>
   <div class="good">
-    goods{{ $t("el.cascader.loading") }}{{ $t("message") }}
+    <div @click="cancelLoading">goods{{ $t("el.cascader.loading") }}{{ $t("message") }}</div>
     <el-upload class="upload-demo"
                :before-upload="handleUpload"
                action="http://192.168.5.220:8081/file_upload">
       <el-button type="ghost" icon="ios-cloud-upload-outline">Select the file to upload</el-button>
     </el-upload>
-    <div v-if="file !== null">Upload file: {{ file.name }} <Button type="text" @click="upload" :loading="loadingStatus">{{ loadingStatus ? 'Uploading' : 'Click to upload' }}</Button></div>
+    <div v-loading="loading" v-if="file !== null">Upload file: {{ file.name }} <Button type="text" @click="upload" :loading="loadingStatus">{{ loadingStatus ? 'Uploading' : 'Click to upload' }}</Button></div>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -18,7 +18,8 @@
     data () {
       return {
         file: null,
-        loadingStatus: false
+        loadingStatus: false,
+        loading: true
       }
     },
     created() {
@@ -64,6 +65,9 @@
             console.log(2223, err)
           })
       },
+      cancelLoading() {
+        this.loading = false
+      }
     },
     components: {
     }
