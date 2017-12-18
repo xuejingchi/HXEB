@@ -7,6 +7,12 @@
       <el-button type="ghost" icon="ios-cloud-upload-outline">Select the file to upload</el-button>
     </el-upload>
     <div v-loading="loading" v-if="file !== null">Upload file: {{ file.name }} <Button type="text" @click="upload" :loading="loadingStatus">{{ loadingStatus ? 'Uploading' : 'Click to upload' }}</Button></div>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      layout="prev, pager, next"
+      :total="100">
+    </el-pagination>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -19,7 +25,8 @@
       return {
         file: null,
         loadingStatus: false,
-        loading: true
+        loading: true,
+        currentPage1: 5
       }
     },
     created() {
@@ -36,15 +43,21 @@
     computed: {
     },
     methods: {
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`)
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`)
+      },
       handleUpload (file) {
         this.file = file
         console.log(3333, this.file)
         return false
       },
       upload(e) {
-        console.log(33333, e.target.files)
+//        console.log(33333, e.target.files)
 //        console.log(44444, this.$refs.file.files)
-        console.log(this.file)
+//        console.log(this.file)
 //        this.loadingStatus = true
 //        setTimeout(() => {
 //          this.file = null
